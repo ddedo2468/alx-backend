@@ -29,7 +29,7 @@ class LRUCache(BaseCaching):
         """get item from lru cache"""
 
         if key in self.cache_data:
-            self.used_items.pop(key)
+            self.used_items.remove(key)
             self.used_items.append(key)
 
         return self.cache_data.get(key, None)
