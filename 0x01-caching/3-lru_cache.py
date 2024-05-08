@@ -17,14 +17,13 @@ class LRUCache(BaseCaching):
         if not (key and item):
             return
 
-        if len(self.cache_data) >= self.MAX_ITEMS:
-            popped = self.used_items.pop()
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            removed = self.used_items.pop(0)
+            self.cache_data.pop(removed)
+            print("DISCARD: {}".format(removed))
 
-            self.cache_data.pop(popped)
-            print(f"DISCARD: {popped}")
-
-            self.cache_data[key] = item
-            self.used_items.append(key)
+        self.cache_data[key] = item
+        self.used_items.append(key)
 
     def get(self, key):
         """get item from lru cache"""
