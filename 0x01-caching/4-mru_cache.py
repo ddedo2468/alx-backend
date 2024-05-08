@@ -4,7 +4,7 @@
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """simple mru cache class"""
 
     def __init__(self):
